@@ -41,7 +41,7 @@ The client-side application for this project can be found here:
 ### ***Wireframe***
 
  **Planned Wireframe Illustration**
-   ![Game Layout Wireframe]()
+   ![Game Layout Wireframe](https://github.com/intisarHJM/PadelHub-backend/blob/main/1.jpg)
    *This screenshot illustrates the planned wireframe for the game layout.*
 
 
