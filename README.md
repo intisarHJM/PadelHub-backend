@@ -16,6 +16,11 @@
 #### Padel Club Raed provides professional courts (indoor and outdoor) with the highest specifications. We make it easy for you to book, choose equipment, and enjoy the best padel facilities in Bahrain.
 ***
 
+
+## 🔗 Frontend Repository
+The client-side application for this project can be found here:
+**[PadelHub Frontend Repository](https://github.com/intisarHJM/PadelHub-FrontEnd.git)**
+
 ### ***Technologies Used***
 * Node.js
 * Express.js
