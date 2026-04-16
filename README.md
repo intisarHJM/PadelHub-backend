@@ -38,14 +38,22 @@ The client-side application for this project can be found here:
 
 
 ***
-### ***Wireframe***
 
  **Planned Wireframe Illustration**
-   ![Game Layout Wireframe](https://github.com/intisarHJM/PadelHub-backend/blob/main/1.jpg)
-   *This screenshot illustrates the planned wireframe for the game layout.*
+ 
+   ![Home Page](https://github.com/intisarHJM/PadelHub-backend/blob/main/1.jpg)
+   
+   ![About Page](https://github.com/intisarHJM/PadelHub-backend/blob/main/2.jpg)
 
+   ![Clubs Page](https://github.com/intisarHJM/PadelHub-backend/blob/main/3.jpg)
+  
 
+   ![Single Club Page ](https://github.com/intisarHJM/PadelHub-backend/blob/main/4.jpg)
+   
+   ![Reservation Page](https://github.com/intisarHJM/PadelHub-backend/blob/main/5.jpg)
+ 
 
+    
 ### ***Screenshots***
 
  **Final Project Design**
