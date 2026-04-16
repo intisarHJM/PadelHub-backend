@@ -3,7 +3,7 @@
 
 ## Date: 16/4/2026
 
-### By: 
+### By:
 * Rehab Mohammed
 * Intisar Hussain
 * Hassan Mahfoodh
@@ -28,7 +28,7 @@ The client-side application for this project can be found here:
 * MongoDB with Mongoose ODM
 * JWT , CORS middleware
 * React and Javascript
-  
+
 ***
 
 ### ***Getting Started***
@@ -40,20 +40,19 @@ The client-side application for this project can be found here:
 ***
 
  **Planned Wireframe Illustration**
- 
-   ![Home Page](https://github.com/intisarHJM/PadelHub-backend/blob/main/1.jpg)
-   
-   ![About Page](https://github.com/intisarHJM/PadelHub-backend/blob/main/2.jpg)
 
-   ![Clubs Page](https://github.com/intisarHJM/PadelHub-backend/blob/main/3.jpg)
-  
+   ![Home Page](./public/wireframe-imgs/1.jpg)
 
-   ![Single Club Page ](https://github.com/intisarHJM/PadelHub-backend/blob/main/4.jpg)
-   
-   ![Reservation Page](https://github.com/intisarHJM/PadelHub-backend/blob/main/5.jpg)
- 
+   ![About Page](./public/wireframe-imgs/2.jpg)
 
-    
+   ![Clubs Page](./public/wireframe-imgs/3.jpg)
+
+   ![Single Club Page ](./public/wireframe-imgs/4.jpg)
+
+   ![Reservation Page](./public/wireframe-imgs/5.jpg)
+
+
+
 ### ***Screenshots***
 
  **Final Project Design**
