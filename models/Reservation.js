@@ -8,10 +8,7 @@ const reservationSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    equipmentList: {
-      type: Boolean,
-      default: false,
-    },
+
     date: {
       type: Date,
       required: true,

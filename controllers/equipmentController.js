@@ -36,18 +36,19 @@ const getEquipmentById = async (req, res) => {
 }
 
 
-const updateEquipment = async (req, res) => {
-  try {
-    const equipment = await Equipment.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    })
-    if (!equipment) return res.status(404).json({ message: "Not found" })
-    res.status(200).json({ message: "Updated successfully", data: equipment })
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-}
+// const updateEquipment = async (req, res) => {
+//   try {
+//     const equipment = await Equipment.findByIdAndUpdate(req.params.id, req.body, {
+//       new: true,
+//       runValidators: true,
+//     })
+//     if (!equipment) return res.status(404).json({ message: "Not found" })
+//     res.status(200).json({ message: "Updated successfully", data: equipment })
+
+//   } catch (error) {
+//     res.status(400).json({ error: error.message });
+//   }
+// }
 
 
 const deleteEquipment = async (req, res) => {
@@ -64,6 +65,5 @@ module.exports = {
   createEquipment,
   getAllEquipment,
   getEquipmentById,
-  updateEquipment,
   deleteEquipment,
 }
