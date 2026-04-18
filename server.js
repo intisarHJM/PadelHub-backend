@@ -6,6 +6,7 @@ const cors = require("cors")
 
 const authRouter = require("./routes/authRouter")
 const courtRouter = require("./routes/courtRouter")
+const equipmentRouter=require("./routes/equipmentRouter")
 
 const PORT = process.env.PORT || 3001
 
@@ -19,6 +20,8 @@ app.use(cors())
 
 app.use("/auth", authRouter)
 app.use("/courts", courtRouter) // path to '/courts'
+app.use("/equ",equipmentRouter)
+
 
 app.get("/", (req, res) => {
   res.send("welcome!")
