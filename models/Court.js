@@ -6,14 +6,13 @@ const courtSchema = new Schema(
   {
     court_img: { type: String, required: false },
     court_id: { type: String, required: true },
-    roomNum: { type: Number, required: true },
-    roomType: { type: String, required: true },
+    courtType: { type: String, required: true },
     price: { type: Number, required: true },
 
     reviews: [
       new Schema({
         author: {
-          type: Schema.Types.ObjectId,
+          type: mongoose.Schema.Types.ObjectId,
           ref: "User",
           required: true,
         },
