@@ -76,8 +76,17 @@ const updatePassword = async (req, res) => {
   }
 }
 
+const checkSession = async (req, res) => {
+  try {
+    const { id } = res.locals.payload
+    const user = await User.findById(id).select("-password")
+    res.send(user)
+  } catch (error) {}
+}
+
 module.exports = {
   signUp,
   signIn,
   updatePassword,
+  checkSession,
 }
