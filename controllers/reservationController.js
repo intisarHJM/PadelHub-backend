@@ -29,17 +29,17 @@ const createReservation = async (req, res) => {
   }
 }
 
-const getReservationByUser = async (req, res) => {
-  try {
-    const userReservations = await Reservation.find({
-      owner: req.params.id,
-    }).populate("court")
+// const getReservationByUser = async (req, res) => {
+//   try {
+//     const userReservations = await Reservation.find({
+//       owner: req.params.id,
+//     }).populate("court")
 
-    res.json(userReservations)
-  } catch (error) {
-    res.status(500).json({ error: error.message })
-  }
-}
+//     res.json(userReservations)
+//   } catch (error) {
+//     res.status(500).json({ error: error.message })
+//   }
+// }
 
 const getAllReservations = async (req, res) => {
   try {
@@ -71,7 +71,7 @@ const deleteReservation = async (req, res) => {
 
 module.exports = {
   createReservation,
-  getReservationByUser,
+  // getReservationByUser,
   getAllReservations,
   deleteReservation,
 }

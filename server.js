@@ -1,3 +1,6 @@
+const dns = require("dns")
+dns.setServers(["8.8.8.8", "1.1.1.1"])
+
 require("dotenv").config({ quiet: true })
 
 const express = require("express")
@@ -11,6 +14,7 @@ const authRouter = require("./routes/authRouter")
 const courtRouter = require("./routes/courtRouter")
 const equipmentRouter = require("./routes/equipmentRouter")
 const reservationRouter = require("./routes/reservationRouter")
+const userRouter = require("./routes/userRouter")
 
 const PORT = process.env.PORT || 3001
 
@@ -24,8 +28,9 @@ app.use(cors())
 
 app.use("/auth", authRouter)
 app.use("/courts", courtRouter) // path to '/courts'
-app.use("/equipments", equipmentRouter)
-app.use("/reservation", reservationRouter)
+app.use("/equ", equipmentRouter)
+app.use("/reserv", reservationRouter)
+app.use("/user", userRouter)
 
 app.get("/", (req, res) => {
   res.send("welcome!")

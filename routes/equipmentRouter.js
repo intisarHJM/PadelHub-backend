@@ -1,28 +1,38 @@
 // equipment router
 const router = require("express").Router()
-const controller = require("../controllers/equipmentController")
+const equController = require("../controllers/equipmentController")
 const middleware = require("../middleware")
 
-router.get(
-  "/",
-  middleware.stripToken,
-  middleware.verifyToken,
-  controller.getAllEquipment
-)
-
-router.get(
-  "/:id",
-  middleware.stripToken,
-  middleware.verifyToken,
-  controller.getEquipmentById
-)
-
 router.post(
-  "/",
+  "/buy/:id",
   middleware.stripToken,
   middleware.verifyToken,
-  controller.createEquipment
+  equController.buyEquipments
 )
+
+/////////////////////////////////////////////////////////////////////////////////////////
+//old  code
+
+// router.get(
+//   "/",
+//   middleware.stripToken,
+//   middleware.verifyToken,
+//   controller.getAllEquipment
+// )
+
+// router.get(
+//   "/:id",
+//   middleware.stripToken,
+//   middleware.verifyToken,
+//   controller.getEquipmentById
+// )
+
+// router.post(
+//   "/",
+//   middleware.stripToken,
+//   middleware.verifyToken,
+//   controller.createEquipment
+// )
 
 // router.put(
 //   '/:id',
@@ -31,11 +41,11 @@ router.post(
 //   controller.updateEquipment
 // )
 
-router.delete(
-  "/:id",
-  middleware.stripToken,
-  middleware.verifyToken,
-  controller.deleteEquipment
-)
+// router.delete(
+//   "/:id",
+//   middleware.stripToken,
+//   middleware.verifyToken,
+//   controller.deleteEquipment
+// )
 
 module.exports = router
