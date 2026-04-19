@@ -1,6 +1,7 @@
 // reservation controller
 const Reservation = require("../models/Reservation")
 const User = require("../models/User")
+const Equipment = require("../models/Equipment")
 
 const createReservation = async (req, res) => {
   try {
@@ -48,6 +49,7 @@ const deleteReservation = async (req, res) => {
     res.status(500).json({ error: error.message })
   }
 }
+
 
 module.exports = {
   createReservation,

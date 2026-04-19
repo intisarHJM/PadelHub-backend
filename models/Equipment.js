@@ -3,23 +3,29 @@ const mongoose = require("mongoose")
 
 const equipmentSchema = new mongoose.Schema(
   {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     toolName: {
       type: String,
-      required: true
+      required: true,
     },
-    price: {
-      type: Number,
-      required: true
+    tool_img: {
+      type: String,
+      required: true,
     },
-    room: {
-      type: Number,
-      required: true
-    },
-    qty: {
+    pricePerUnit: {
       type: Number,
       required: true,
-      default: 0
-    }
+    },
+
+    quantity: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
   },
   { timestamps: true }
 )
