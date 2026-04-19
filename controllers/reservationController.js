@@ -2,16 +2,42 @@
 const Reservation = require("../models/Reservation")
 const User = require("../models/User")
 const Equipment = require("../models/Equipment")
+const Court = require("../models/Court")
 
 const createReservation = async (req, res) => {
   try {
-    const newReservation = await Reservation.create(req.body)
+    const checkReservation = await User.findById(req.body.owner, req.params.id)
+    const user = await req.params.id
+    if (checkReservation.activeReserve) {
+      return res.json({
+        message: "You  have an active reservation. ",
+      })
+    }
 
+    await Reservation.create({
+      owner: user,
+      date: req.body.date,
+      totalPrice: req.body.totalPrice,
+      court: req.body.court,
+    })
+    const newReservation = await Reservation.create(req.body)
     await User.findByIdAndUpdate(req.body.owner, { activeReserve: true })
 
     res.json(newReservation)
   } catch (error) {
     res.status(400).json({ error: error.message })
+  }
+}
+
+const getReservationByUser = async (req, res) => {
+  try {
+    const userReservations = await Reservation.find({
+      owner: req.params.id,
+    }).populate("court")
+
+    res.json(userReservations)
+  } catch (error) {
+    res.status(500).json({ error: error.message })
   }
 }
 
@@ -43,9 +69,9 @@ const deleteReservation = async (req, res) => {
   }
 }
 
-
 module.exports = {
   createReservation,
+  getReservationByUser,
   getAllReservations,
   deleteReservation,
 }
