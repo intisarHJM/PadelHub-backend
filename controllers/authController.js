@@ -53,7 +53,31 @@ const signIn = async (req, res) => {
   }
 }
 
+const updatePassword = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id)
+
+    // const password = user.password
+
+    let matched = await middleware.comparePassword(
+      req.body.oldPassword,
+      user.password
+    )
+
+    if (matched) {
+      let hashedPassword = await middleware.hashPassword(req.body.newPassword)
+      await User.findByIdAndUpdate(req.params.id, { password: hashedPassword })
+      return res.send("Password updated successfully!")
+    }
+
+    res.send("Unauthorized access.")
+  } catch (error) {
+    res.send("Error: " + error)
+  }
+}
+
 module.exports = {
   signUp,
   signIn,
+  updatePassword,
 }
