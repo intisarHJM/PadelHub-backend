@@ -4,8 +4,15 @@ const User = require("../models/User")
 
 const createReservation = async (req, res) => {
   try {
-    const newReservation = await Reservation.create(req.body)
+    const checkReservation = await User.findById(req.body.owner)
 
+    if (checkReservation.activeReserve) {
+      return res.json({
+        message: "You  have an active reservation. ",
+      })
+    }
+
+    const newReservation = await Reservation.create(req.body)
     await User.findByIdAndUpdate(req.body.owner, { activeReserve: true })
 
     res.json(newReservation)

@@ -1,69 +1,50 @@
-// equipment controller
-
+// reservation controller
+const Reservation = require("../models/Reservation")
+const User = require("../models/User")
 const Equipment = require("../models/Equipment")
 
-
-const createEquipment = async (req, res) => {
+const createReservation = async (req, res) => {
   try {
-    const equipment = await Equipment.create(req.body)
-    res.status(201).json({
-      message: "Equipment created successfully",
-      data: equipment,
-    })
+    const newReservation = await Reservation.create(req.body)
+
+    await User.findByIdAndUpdate(req.body.owner, { activeReserve: true })
+
+    res.json(newReservation)
   } catch (error) {
     res.status(400).json({ error: error.message })
   }
 }
 
-
-const getAllEquipment = async (req, res) => {
+const getAllReservations = async (req, res) => {
   try {
-    const equipments = await Equipment.find({})
-    res.status(200).json({ data: equipments })
+    const allReservations = await Reservation.find()
+      .populate("owner", "username email")
+      .populate("court")
+
+    res.json(allReservations)
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
 }
-
-const getEquipmentById = async (req, res) => {
+const deleteReservation = async (req, res) => {
   try {
-    const equipment = await Equipment.findById(req.params.id);
-    if (!equipment) return res.status(404).json({ message: "Not found" })
-    res.status(200).json({ data: equipment });
-  } catch (error) {
-    res.status(500).json({ error: error.message })
-  }
-}
+    const reservation = await Reservation.findById(req.params.id)
 
+    if (!reservation) {
+      return res.status(404).json({ message: "Reservation not found" })
+    }
 
-const updateEquipment = async (req, res) => {
-  try {
-    const equipment = await Equipment.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    })
-    if (!equipment) return res.status(404).json({ message: "Not found" })
-    res.status(200).json({ message: "Updated successfully", data: equipment })
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-}
+    await Reservation.findByIdAndDelete(req.params.id)
+    await User.findByIdAndUpdate(reservation.owner, { activeReserve: false })
 
-
-const deleteEquipment = async (req, res) => {
-  try {
-    const equipment = await Equipment.findByIdAndDelete(req.params.id)
-    if (!equipment) return res.status(404).json({ message: "Not found" })
-    res.status(200).json({ message: "Equipment deleted successfully" })
+    res.json({ message: "Reservation canceled and user status updated" })
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
 }
 
 module.exports = {
-  createEquipment,
-  getAllEquipment,
-  getEquipmentById,
-  updateEquipment,
-  deleteEquipment,
+  createReservation,
+  getAllReservations,
+  deleteReservation,
 }
