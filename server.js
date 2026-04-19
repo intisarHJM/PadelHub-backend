@@ -1,14 +1,10 @@
-const dns = require("dns")
-dns.setServers(["8.8.8.8", "1.1.1.1"])
+
 
 require("dotenv").config({ quiet: true })
 
 const express = require("express")
 const morgan = require("morgan")
 const cors = require("cors")
-
-const dns = require("dns")
-dns.setServers(["8.8.8.8", "1.1.1.1"])
 
 const authRouter = require("./routes/authRouter")
 const courtRouter = require("./routes/courtRouter")

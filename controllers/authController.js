@@ -76,8 +76,14 @@ const updatePassword = async (req, res) => {
   }
 }
 
+const checkSession = () => {
+  const { payload } = res.locals
+  res.send(payload)
+}
+
 module.exports = {
   signUp,
   signIn,
   updatePassword,
+  checkSession,
 }
