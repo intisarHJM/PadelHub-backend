@@ -2,32 +2,32 @@
 
 const router = require("express").Router()
 const middleware = require("../middleware")
-const reservation = require("../controllers/reservationController")
+const reservationController = require("../controllers/reservationController")
 
 router.get(
   "/",
   middleware.stripToken,
   middleware.verifyToken,
-  reservation.getAllReservations
+  reservationController.getAllReservations
 )
 router.post(
   "/:id",
   middleware.stripToken,
   middleware.verifyToken,
-  reservation.createReservation
+  reservationController.createReservation
 )
 
 router.delete(
   "/:id",
   middleware.stripToken,
   middleware.verifyToken,
-  reservation.deleteReservation
+  reservationController.deleteReservation
 )
-router.get(
-  "/user/:id",
-  middleware.stripToken,
-  middleware.verifyToken,
-  reservation.getReservationByUser
-)
+// router.get(
+//   "/user/:id",
+//   middleware.stripToken,
+//   middleware.verifyToken,
+//   reservation.getReservationByUser
+// )
 
 module.exports = router
