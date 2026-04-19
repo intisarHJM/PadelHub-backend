@@ -1,9 +1,14 @@
 // equipment router
 const router = require("express").Router()
-const controller = require("../controllers/equipmentController")
+const equController = require("../controllers/equipmentController")
 const middleware = require("../middleware")
 
-router.post("/buy/:id", controller.buyEquipments)
+router.post(
+  "/buy/:id",
+  middleware.stripToken,
+  middleware.verifyToken,
+  equController.buyEquipments
+)
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //old  code
