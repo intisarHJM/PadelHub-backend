@@ -76,8 +76,14 @@ const updatePassword = async (req, res) => {
   }
 }
 
+const getUserBySession = async (req, res) => {
+  const { payload } = res.locals
+  res.status(200).send(payload)
+}
+
 module.exports = {
   signUp,
   signIn,
   updatePassword,
+  getUserBySession,
 }
