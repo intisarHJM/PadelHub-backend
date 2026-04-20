@@ -35,7 +35,6 @@ const signIn = async (req, res) => {
       req.body.password,
       user.password
     )
-
     if (matched) {
       let payload = {
         id: user._id,
@@ -81,7 +80,9 @@ const checkSession = async (req, res) => {
     const { id } = res.locals.payload
     const user = await User.findById(id).select("-password")
     res.send(user)
-  } catch (error) {}
+  } catch (error) {
+    res.send("Error: " + error)
+  }
 }
 
 module.exports = {
