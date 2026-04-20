@@ -29,7 +29,12 @@ const signUp = async (req, res) => {
 
 const signIn = async (req, res) => {
   try {
+    console.log('sign in')
     const user = await User.findOne({ email: req.body.email })
+
+    if(!user){
+      return res.status(403).json({error:"no user with email or password"})
+    }
 
     let matched = await middleware.comparePassword(
       req.body.password,
@@ -45,6 +50,7 @@ const signIn = async (req, res) => {
       let userData = { email: user.email, id: user._id } //for frontend
       return res.send({ user: userData, token })
     }
+
     res.send("Unauthorized access.")
   } catch (error) {
     console.log("Error: " + error)
