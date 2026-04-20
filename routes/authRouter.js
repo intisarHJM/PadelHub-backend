@@ -5,7 +5,7 @@ const middleware = require("../middleware")
 
 router.post("/sign-up", authController.signUp)
 router.post("/sign-in", authController.signIn)
-router.post(
+router.put(
   "/update-password/:id",
   middleware.stripToken,
   middleware.verifyToken,
@@ -17,5 +17,6 @@ router.get(
   middleware.verifyToken,
   authController.checkSession
 )
+
 
 module.exports = router
