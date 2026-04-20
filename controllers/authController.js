@@ -76,27 +76,17 @@ const updatePassword = async (req, res) => {
   }
 }
 
-<<<<<<< HEAD
-const getUserBySession = async (req, res) => {
-  const { payload } = res.locals
-  res.status(200).send(payload)
-=======
 const checkSession = async (req, res) => {
   try {
     const { id } = res.locals.payload
     const user = await User.findById(id).select("-password")
     res.send(user)
   } catch (error) {}
->>>>>>> 9cf4587cf84c81c00e1720c61e3740c9e4dea4ae
 }
 
 module.exports = {
   signUp,
   signIn,
   updatePassword,
-<<<<<<< HEAD
-  getUserBySession,
-=======
   checkSession,
->>>>>>> 9cf4587cf84c81c00e1720c61e3740c9e4dea4ae
 }

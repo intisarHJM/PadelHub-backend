@@ -18,8 +18,5 @@ router.get(
   authController.checkSession
 )
 
-router.get("/session",
-  middleware.stripToken,
-  middleware.verifyToken,
-  authController.getUserBySession)
+
 module.exports = router
