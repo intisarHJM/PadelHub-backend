@@ -1,5 +1,3 @@
-
-
 require("dotenv").config({ quiet: true })
 
 const express = require("express")
@@ -24,8 +22,8 @@ app.use(cors())
 
 app.use("/auth", authRouter)
 app.use("/courts", courtRouter) // path to '/courts'
-app.use("/equ", equipmentRouter)
-app.use("/reserv", reservationRouter)
+app.use("/equipments", equipmentRouter)
+app.use("/reservations", reservationRouter)
 app.use("/user", userRouter)
 
 app.get("/", (req, res) => {
