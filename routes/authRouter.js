@@ -11,6 +11,12 @@ router.put(
   middleware.verifyToken,
   authController.updatePassword
 )
+router.get(
+  "/session",
+  middleware.stripToken,
+  middleware.verifyToken,
+  authController.checkSession
+)
 
 router.get("/session",
   middleware.stripToken,
