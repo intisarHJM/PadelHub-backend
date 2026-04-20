@@ -11,7 +11,7 @@ router.get(
   reservationController.getAllReservations
 )
 router.post(
-  "/:id",
+  "/",
   middleware.stripToken,
   middleware.verifyToken,
   reservationController.createReservation

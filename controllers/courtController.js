@@ -31,28 +31,27 @@ const getCourtById = async (req, res) => {
 
 const addReview = async (req, res) => {
   try {
-    const court = await Court.findById(req.params.id)
-
     const newReview = {
       author: res.locals.payload.id,
       description: req.body.description,
-      rating: req.body.rating,
+      rating: Number(req.body.rating),
     }
 
-    court.reviews.push(newReview)
-    await court.save()
-    await court.populate("reviews.author", "username")
+    
+    const court = await Court.findByIdAndUpdate(
+      req.params.id,
+      { $push: { reviews: newReview } },
+      { new: true, validateBeforeSave: false }
+    ).populate("reviews.author", "username")
+
+    if (!court) return res.status(404).send("Court not found")
 
     res.status(200).json({ court })
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message:
-        "An error occurred pushing review inside reviews array in the court ⚠️",
-      error: error.message,
-    })
+    res.status(500).json({ error: error.message })
   }
 }
+
 
 module.exports = {
   getAllCourts,
