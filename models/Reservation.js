@@ -17,6 +17,10 @@ const reservationSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    phoneNumber: {
+    type:Number,
+    required: true
+  },
     court: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Court",
