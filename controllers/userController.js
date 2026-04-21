@@ -18,7 +18,9 @@ const getReservationByUser = async (req, res) => {
   try {
     const userReservations = await Reservation.find({
       owner: req.params.id,
-    }).populate("court")
+    })
+      .populate("court")
+      .populate("user", "username")
 
     res.json(userReservations)
   } catch (error) {

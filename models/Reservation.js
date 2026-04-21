@@ -15,6 +15,7 @@ const reservationSchema = new mongoose.Schema(
     },
     totalPrice: {
       type: Number,
+      required: true,
     },
     court: {
       type: mongoose.Schema.Types.ObjectId,

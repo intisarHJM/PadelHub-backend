@@ -6,13 +6,13 @@ const Court = require("../models/Court")
 
 const createReservation = async (req, res) => {
   try {
-    const checkReservation = await User.findById(req.body.owner, req.params.id)
-    const user = await req.params.id
-    if (checkReservation.activeReserve) {
+    /* const checkReservation = await User.findById(req.params.id) */
+    const user = req.params.id
+    /* if (checkReservation.activeReserve) {
       return res.json({
         message: "You  have an active reservation. ",
       })
-    }
+    } */
 
     await Reservation.create({
       owner: user,
@@ -20,10 +20,11 @@ const createReservation = async (req, res) => {
       totalPrice: req.body.totalPrice,
       court: req.body.court,
     })
-    const newReservation = await Reservation.create(req.body)
-    await User.findByIdAndUpdate(req.body.owner, { activeReserve: true })
+    /* const newReservation = await Reservation.create(req.body)
+    await User.findByIdAndUpdate(req.body.owner, { activeReserve: true }) */
 
-    res.json(newReservation)
+    // res.json(newReservation)
+    res.send("created successfully")
   } catch (error) {
     res.status(400).json({ error: error.message })
   }
@@ -41,17 +42,17 @@ const createReservation = async (req, res) => {
 //   }
 // }
 
-const getAllReservations = async (req, res) => {
-  try {
-    const allReservations = await Reservation.find()
-      .populate("owner", "username email")
-      .populate("court")
+// const getAllReservations = async (req, res) => {
+//   try {
+//     const allReservations = await Reservation.find()
+//       .populate("owner", "username email")
+//       .populate("court")
 
-    res.json(allReservations)
-  } catch (error) {
-    res.status(500).json({ error: error.message })
-  }
-}
+//     res.json(allReservations)
+//   } catch (error) {
+//     res.status(500).json({ error: error.message })
+//   }
+// }
 const deleteReservation = async (req, res) => {
   try {
     const reservation = await Reservation.findById(req.params.id)
@@ -72,6 +73,6 @@ const deleteReservation = async (req, res) => {
 module.exports = {
   createReservation,
   // getReservationByUser,
-  getAllReservations,
+  // getAllReservations, to be determined
   deleteReservation,
 }
