@@ -37,7 +37,7 @@ const addReview = async (req, res) => {
       rating: Number(req.body.rating),
     }
 
-    
+
     const court = await Court.findByIdAndUpdate(
       req.params.id,
       { $push: { reviews: newReview } },
