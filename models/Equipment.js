@@ -13,15 +13,6 @@ const equipmentSchema = new mongoose.Schema(
       required: true,
     },
 
-    //commented
-    /*  tool_img: {
-      type: String,
-      required: true,
-    }, */
-    /* pricePerUnit: {
-      type: Number,
-      required: true,
-    }, */
 
     quantity: {
       type: Number,

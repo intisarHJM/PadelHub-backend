@@ -13,11 +13,6 @@ const createReservation = async (req, res) => {
     }
 
 
-    /*
-    const user = await User.findById(userId)
-    if (user.activeReserve) {
-    }
-    */
   const newReservation = await Reservation.create({
       owner: userId,
       date: date,
