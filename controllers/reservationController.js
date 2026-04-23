@@ -82,5 +82,5 @@ module.exports = {
   createReservation,
   getAllReservations,
   getReservationsByCourt,
-  deleteReservation,
+  deleteReservation
 }
