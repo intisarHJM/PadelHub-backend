@@ -18,7 +18,7 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(cors())
+app.use(cors({ origin: "https://padelhub.surge.sh" }))
 
 app.use("/auth", authRouter)
 app.use("/courts", courtRouter) // path to '/courts'
