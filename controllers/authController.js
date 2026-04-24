@@ -60,6 +60,12 @@ const signIn = async (req, res) => {
 
 const updatePassword = async (req, res) => {
   try {
+    const { oldPassword, newPassword } = req.body
+
+    if (!oldPassword || !newPassword) {
+      return res.status(400).send({ msg: "Missing fields" })
+    }
+
     const user = await User.findById(req.params.id)
 
     // const password = user.password
