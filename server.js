@@ -27,7 +27,7 @@ app.use("/reservations", reservationRouter)
 app.use("/user", userRouter)
 
 app.get("/", (req, res) => {
-  res.send("welcome!")
+  res.send("welcome the server is running successfully!")
 })
 
 app.listen(PORT, () => {
