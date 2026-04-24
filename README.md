@@ -1,7 +1,8 @@
 # PadelHub-backend
- Project 3 of general assembly software engineering
+ A project focus on building a smooth booking system linked to a pro shop that offers racket trials and helps players find matches to keep them coming back.
 
-## Date: 16/4/2026
+## Starting Date: 16/4/2026
+## Completion Date : 23/4/2026
 
 ### By:
 * Rehab Mohammed
