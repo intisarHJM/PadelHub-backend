@@ -29,7 +29,7 @@ const signUp = async (req, res) => {
 
 const signIn = async (req, res) => {
   try {
-    console.log("sign in")
+    /*console.log("sign in")*/
     const user = await User.findOne({ email: req.body.email })
 
     if (!user) {
@@ -47,8 +47,9 @@ const signIn = async (req, res) => {
       }
 
       let token = middleware.createToken(payload)
-      let userData = { email: user.email, id: user._id } //for frontend
+      let userData = { email: user.email, _id: user._id } //for frontend
       return res.send({ user: userData, token })
+
     }
 
     res.send("Unauthorized access.")
