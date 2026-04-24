@@ -29,11 +29,11 @@ const signUp = async (req, res) => {
 
 const signIn = async (req, res) => {
   try {
-    console.log('sign in')
+    console.log("sign in")
     const user = await User.findOne({ email: req.body.email })
 
-    if(!user){
-      return res.status(403).json({error:"no user with email or password"})
+    if (!user) {
+      return res.status(403).json({ error: "no user with email or password" })
     }
 
     let matched = await middleware.comparePassword(
@@ -60,6 +60,12 @@ const signIn = async (req, res) => {
 
 const updatePassword = async (req, res) => {
   try {
+    const { oldPassword, newPassword } = req.body
+
+    if (!oldPassword || !newPassword) {
+      return res.status(400).send({ msg: "Missing fields" })
+    }
+
     const user = await User.findById(req.params.id)
 
     // const password = user.password
